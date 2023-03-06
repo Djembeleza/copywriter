@@ -1,0 +1,80 @@
+{% extends "base.html" %} {% block head %}
+<title>Cover Letter Assistant</title>
+{% endblock head %} {% block content %}
+<section class="px-4 py-5 text-center">
+  <div class="py-5">
+    <h1 class="display-5 fw-bold text-capitalize">
+      The only assistant you need to write a compelling cover letter
+    </h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="fs-5 mb-4">
+        You are at the right place if you need ideas for a compelling cover
+        letter. All you need to do is enter some of your details and the AI
+        assistant will compile a cover letter for you in seconds.
+      </p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <a class="btn btn-main btn-lg px-4 me-sm-3 fw-bold"
+          href="#form-section">Start Now</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="form-section" class="px-4 py-5 mb-2">
+  <h2 class="text-center text-capitalize mb-2">Enter your details</h2>
+  <form action="/create" method="POST" class="col-lg-8 mx-lg-auto">
+    <div class="mb-3">
+      <label for="exampleFormControlInput1" class="form-label">Full name</label>
+      <input
+        type="text"
+        name="full_name"
+        class="form-control"
+        id="exampleFormControlInput1"
+        placeholder="Djembeleza Kaola"
+        required
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleFormControlInput2" class="form-label"
+        >What position are you applying for?</label
+      >
+      <input
+        type="text"
+        name="position"
+        class="form-control"
+        id="exampleFormControlInput2"
+        placeholder="Front-end Developer"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="exampleFormControlTextarea1" class="form-label"
+        >Some of your experience</label
+      >
+      <textarea
+        class="form-control"
+        name="experience"
+        id="exampleFormControlTextarea1"
+        rows="3"
+        placeholder="I have 5 years experience working...."
+      ></textarea>
+    </div>
+    <div class="mb-3">
+      <button type="submit" class="btn btn-main btn-lg">Compile Cover Letter ✉</button>
+    </div>
+  </form>
+</section>
+
+{% if cover_letter %}
+
+<p class="lead text-center">
+  {{cover_letter|safe}}
+</p>
+  
+{% else %}
+<p class="fs-5 text-center">The letter is supposed to be displayed here...</p>
+{% endif %}
+
+{% endblock content %}
